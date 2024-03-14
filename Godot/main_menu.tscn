@@ -1,0 +1,178 @@
+[gd_scene load_steps=11 format=3 uid="uid://dfk3ql5s22836"]
+
+[ext_resource type="Script" path="res://Main Menu.gd" id="1_7iukm"]
+[ext_resource type="Texture2D" uid="uid://bxrvx2bvjil62" path="res://test level/spellsnipe.png" id="2_kr0mk"]
+[ext_resource type="FontFile" uid="uid://dct5cddd5ar3l" path="res://test level/press-start-2p/PressStart2P.ttf" id="3_jkbd4"]
+[ext_resource type="Texture2D" uid="uid://gq7ldbih7dgd" path="res://test level/layer 1.png" id="5_hgxys"]
+[ext_resource type="Shader" path="res://scroll.gdshader" id="5_x6w2b"]
+[ext_resource type="Texture2D" uid="uid://8jekcl1gcufe" path="res://test level/layer 2.png" id="6_v7lb1"]
+[ext_resource type="Texture2D" uid="uid://hqan8v5qemxb" path="res://test level/layer 3.png" id="7_hay45"]
+[ext_resource type="Script" path="res://script_parallax_background.gd" id="8_l8yjk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wtr2"]
+expand_margin_left = 11.0
+expand_margin_right = 11.0
+expand_margin_bottom = 23.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1ixt"]
+resource_local_to_scene = true
+shader = ExtResource("5_x6w2b")
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7iukm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.031, 313.688)
+scale = Vector2(0.578158, 0.56169)
+texture = ExtResource("2_kr0mk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = 101.0
+offset_right = 133.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+modulate = Color(0.968627, 0.701961, 0.823529, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_jkbd4")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_5wtr2")
+text = "Play"
+
+[node name="Tutorial" type="Button" parent="VBoxContainer"]
+modulate = Color(0.968627, 0.701961, 0.823529, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_jkbd4")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_5wtr2")
+text = "Tutorial"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+modulate = Color(0.968627, 0.701961, 0.823529, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_jkbd4")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_5wtr2")
+text = "Exit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_i1ixt")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.136
+anchor_right = -0.136
+offset_left = 156.672
+offset_top = 1.0
+offset_right = 1308.67
+offset_bottom = 649.0
+texture = ExtResource("5_hgxys")
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+show_behind_parent = true
+light_mask = 2
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_i1ixt")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.136
+anchor_right = -0.136
+offset_left = 155.672
+offset_top = 1.0
+offset_right = 1310.67
+offset_bottom = 648.0
+texture = ExtResource("6_v7lb1")
+stretch_mode = 6
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+show_behind_parent = true
+light_mask = 2
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_i1ixt")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.136
+anchor_right = -0.136
+offset_left = 156.672
+offset_top = 1.0
+offset_right = 1311.67
+offset_bottom = 648.0
+texture = ExtResource("7_hay45")
+stretch_mode = 6
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+script = ExtResource("8_l8yjk")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(3.575, 3.606)
+
+[node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+scale = Vector2(3.575, 3.60556)
+texture = ExtResource("5_hgxys")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="Hills" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_filter = 1
+scale = Vector2(3.57813, 3.606)
+texture = ExtResource("6_v7lb1")
+centered = false
+
+[node name="Hills (2)" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+visible = false
+texture_filter = 1
+position = Vector2(829, 0)
+scale = Vector2(3.606, 3.606)
+texture = ExtResource("6_v7lb1")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.5, 1.5)
+
+[node name="Grass" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture_filter = 1
+scale = Vector2(3.606, 3.606)
+texture = ExtResource("7_hay45")
+centered = false
+
+[node name="Grass (2)" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+visible = false
+texture_filter = 1
+position = Vector2(829, 0)
+scale = Vector2(3.606, 3.606)
+texture = ExtResource("7_hay45")
+centered = false
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

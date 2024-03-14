@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmo34rw47hqi2"]
+
+[ext_resource type="Shader" path="res://game_ehe.gdshader" id="1_coj0k"]
+[ext_resource type="Texture2D" uid="uid://dvbeicgummi7o" path="res://test level/bottle.png" id="2_hojjb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvrf4"]
+shader = ExtResource("1_coj0k")
+shader_parameter/ca_strength = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ixd24"]
+
+[node name="game ehe" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+top_level = true
+material = SubResource("ShaderMaterial_bvrf4")
+offset_left = 184.0
+offset_top = 109.0
+offset_right = 685.0
+offset_bottom = 452.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ixd24")
+position = Vector2(591, 339)
+texture = ExtResource("2_hojjb")
